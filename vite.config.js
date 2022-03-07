@@ -3,12 +3,13 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default ({mode}) => defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
       '~': path.resolve(__dirname, './'),
       '@': path.resolve(__dirname, 'src')
     }
-  }
+  },
+  base: mode == 'development' ? './' : (mode == 'beta' ? './' : './')
 })
