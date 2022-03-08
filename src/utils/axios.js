@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from '@/router/index'
 import config from '~/config'
 
-axios.defaults.baseURL = config[import.meta.env.MODE].baseUrl;
+axios.defaults.baseURL = config[import.meta.env.MODE].baseURL;
 
 axios.defaults.withCredentials = true;
 

@@ -11,5 +11,14 @@ export default ({mode}) => defineConfig({
       '@': path.resolve(__dirname, 'src')
     }
   },
-  base: mode == 'development' ? './' : (mode == 'beta' ? './' : './')
+  base: mode == 'development' ? './' : (mode == 'beta' ? './' : './'),
+  server:{
+    proxy:{
+      '/api':{
+        target: 'http://localhost:8090',
+        changeOrigin: true,
+        rewrite: path => path.repeat(/^\/api/,'')
+      }
+    }
+  }
 })
