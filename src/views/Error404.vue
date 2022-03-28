@@ -4,7 +4,5 @@ export default {
 }
 </script>
 <template>
-    <div>
-        登录
-    </div>
+    <div>404页面</div>
 </template>
