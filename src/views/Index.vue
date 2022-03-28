@@ -1,8 +1,12 @@
 <script setup>
+import instance from '../utils/axios';
 
+    function getData(){
+        instance.get('/login').then(res => console.log(res))
+    }
 </script>
 <template>
     <div>
-        首页
+        <button @click="getData">获取数据</button>
     </div>
 </template>
