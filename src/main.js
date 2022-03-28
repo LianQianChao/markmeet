@@ -4,5 +4,7 @@ import router from './router'
 
 //mock数据
 import '../mock'
+const app = createApp(App)
 
-createApp(App).use(router).mount('#app')
+app.use(router)
+app.mount('#app')

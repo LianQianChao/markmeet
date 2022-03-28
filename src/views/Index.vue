@@ -7,6 +7,6 @@ import instance from '../utils/axios';
 </script>
 <template>
     <div>
-        <button @click="getData">获取数据</button>
+        <el-button  @click="getData" type="primary">获取数据</el-button>
     </div>
 </template>
