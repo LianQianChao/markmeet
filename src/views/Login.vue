@@ -1,5 +1,8 @@
 <script>
 import { reactive } from 'vue'
+import instance from '../utils/axios'
+import { ElMessage } from 'element-plus'
+import router from '../router'
 
 export default {
   setup() {
@@ -9,7 +12,19 @@ export default {
       remember: false,
     })
     const onSubmit = () => {
-      console.log(formData)
+      instance.get('/login', formData).then(
+        value => {
+          console.log(value.code)
+          if(value.code === 200){
+            ElMessage.success(value.message)
+            localStorage.setItem('token',value.data.token)
+            router.push('/')
+            }
+          
+          
+        },
+        error => ElMessage.error(error)
+      )
     }
 
     return {
@@ -38,8 +53,8 @@ export default {
         </el-form>
       </div>
       <div>
-          <h4>欢迎登录</h4>
-          <img src="../assets/logo.png">
+        <h4>欢迎登录</h4>
+        <img src="../assets/logo.png" />
       </div>
     </div>
   </div>
@@ -62,7 +77,7 @@ export default {
   align-items: center;
 }
 .login-body + div {
-    text-align: center;
+  text-align: center;
   width: 400px;
   height: 420px;
   background-color: #203c67;
