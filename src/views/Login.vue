@@ -7,14 +7,13 @@ import router from '../router'
 export default {
   setup() {
     const formData = reactive({
-      username: '',
-      password: '',
+      username: 'admin',
+      password: 'admin',
       remember: false,
     })
     const onSubmit = () => {
       instance.get('/login', formData).then(
         value => {
-          console.log(value.code)
           if(value.code === 200){
             ElMessage.success(value.message)
             localStorage.setItem('token',value.data.token)
