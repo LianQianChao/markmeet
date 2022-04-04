@@ -1,60 +1,62 @@
 <script setup>
-import { Expand, Avatar } from '@element-plus/icons-vue'
-
-const emits = defineEmits(['to-expand'])
-
-const expandAside = () => {
-  emits('to-expand')
-}
+import { Avatar } from '@element-plus/icons-vue'
 </script>
 <template>
-  <div class="header">
-    <el-icon @click="expandAside"><expand /></el-icon>
-    <div class="header-info">
-      <p><el-icon><avatar /></el-icon></p>
+  <header>
+    <div class="title">
+      <img src="../assets/logo.png" />
+      <h2>后台管理系统</h2>
+    </div>
+    <div class="user">
+      <p>
+        <el-icon><avatar /></el-icon>
+      </p>
       <span>admin</span>
     </div>
-  </div>
+  </header>
 </template>
 
 <style scoped>
 .header {
   background: #193454;
   min-height: 60px;
+  color: #fff;
   display: flex;
   justify-content: space-between;
-
   align-items: center;
+  border-bottom: 1px solid #fff;
 }
-.el-button,
 .header > * {
   margin: 0 10px;
 }
-
-.header > :first-child {
-  font-size: 22px;
-  padding: 4px;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  cursor: pointer;
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
-.header-info{
+.title > img {
+  width: 40px;
+  height: 40px;
+}
+.title > h2 {
+  margin: 0 8px;
+}
+.user {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
-.header-info > p {
-  height: 30px;
-  width: 30px;
-  margin: 0px 8px;
-  font-size: 22px;
+.user > p {
+  height: 34px;
+  width: 34px;
   border: 1px solid #fff;
   border-radius: 50%;
+  margin: 0 10px;
+  font-size: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
 </style>
