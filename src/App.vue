@@ -1,44 +1,10 @@
-<script setup>
-import { ref } from 'vue'
-import router from './router'
-import Navigation from './components/Navigation.vue'
-import Header from './components/Header.vue'
-
-const size = ref(0)
-const layout = ref(false)
-const isCollapse = ref(false)
-const changeWidth = ref(200)
-router.afterEach(to => {
-  if (to.name !== 'login') {
-    size.value = 20
-    layout.value = true
-  } else {
-    size.value = 0
-    layout.value = false
-  }
-})
-
-const changeIsCollapse = () => {
-  isCollapse.value = !isCollapse.value
-  isCollapse.value?changeWidth.value=63:changeWidth.value=200
-}
-
-</script>
+<script setup></script>
 <template>
-  <div class="common-layout">
-    <el-container v-if="layout">
-      <el-aside :style="{ width: changeWidth + 'px' }">
-        <Navigation :isCollapse="isCollapse" />
-      </el-aside>
-      <el-container>
-        <el-header> <Header @to-expand="changeIsCollapse" /> </el-header>
-        <el-main :style="{ padding: size }"
-          ><router-view></router-view
-        ></el-main>
-      </el-container>
-    </el-container>
-    <div v-else>
-      <router-view></router-view>
+  <div class="flex-column-container">
+    <router-view class="header" name="HeaderView"></router-view>
+    <div class="flex-row-container">
+      <router-view class="aside" name="AsideView"></router-view>
+      <router-view class="main"></router-view>
     </div>
   </div>
 </template>
@@ -47,16 +13,22 @@ const changeIsCollapse = () => {
 body {
   margin: 0;
 }
-
-main {
+.flex-column-container{
+  display: flex;
+  flex-direction: column;
+}
+.flex-row-container{
+  display: flex;
+  flex-flow: row nowrap;
+}
+.header{
+  min-height: 60px;
+}
+.aside{
+  min-width: 200px;
   height: calc(100vh - 60px);
-  --el-main-padding: 10px!important;
 }
-.el-header {
-  color: #fff;
-  padding: 0;
+.main{
+  flex-grow: 1;
 }
-/* .el-header,.el-footer{
-  padding: 0;
-} */
 </style>

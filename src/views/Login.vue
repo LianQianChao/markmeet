@@ -17,7 +17,7 @@ export default {
           if(value.code === 200){
             ElMessage.success(value.message)
             localStorage.setItem('token',value.data.token)
-            router.push('/')
+            router.replace('/')
             }
           
           
