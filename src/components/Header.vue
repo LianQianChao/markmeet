@@ -19,7 +19,7 @@ import { Avatar } from '@element-plus/icons-vue'
 <style scoped>
 .header {
   background: #193454;
-  min-height: 60px;
+  min-height: 59px;
   color: #fff;
   display: flex;
   justify-content: space-between;

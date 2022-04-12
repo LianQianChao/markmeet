@@ -1,11 +1,22 @@
-<script setup>
+<script>
 import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting,
-} from '@element-plus/icons-vue'
+    Location,
+    Setting,
+  } from '@element-plus/icons-vue'
+import aside from '../api/aside'
 
+export default {
+  components:{
+    Location,
+    Setting
+  },
+  setup(){
+    
+    return{
+      aside
+    }
+  }
+}
 </script>
 <template>
   <aside>
@@ -17,21 +28,9 @@ import {
       text-color="#fff"
       :router="true"
     >
-      <el-menu-item index="/">
-        <el-icon><location /></el-icon>
-        <span>系统首页</span>
-      </el-menu-item>
-      <el-menu-item index="/user">
-        <el-icon><icon-menu /></el-icon>
-        <span>用户管理</span>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <el-icon><document /></el-icon>
-        <span>档案管理</span>
-      </el-menu-item>
-      <el-menu-item index="/setting">
-        <el-icon><setting /></el-icon>
-        <span>系统设置</span>
+      <el-menu-item v-for="(as,index) in aside" :index="as.path" :key="index">
+        <el-icon><component :is="as.meta.icon"/></el-icon>
+        <span>{{as.meta.title}}</span>
       </el-menu-item>
     </el-menu>
   </aside>
