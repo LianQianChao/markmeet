@@ -3,7 +3,7 @@ import {
     Location,
     Setting,
   } from '@element-plus/icons-vue'
-import aside from '../api/aside'
+import aside from '@/api/aside'
 
 export default {
   components:{
