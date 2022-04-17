@@ -15,9 +15,9 @@ export default {
 
     const onSubmit = () => {
       login(formData).then(
-        value => {
-          if (value.data.code === httpStatus.success) {
-            ElMessage.success('登录成功')
+        res => {
+          if (res.data.code === httpStatus.SUCCESS.code) {
+            ElMessage.success("欢迎")
             router.replace('/')
           }
         },
