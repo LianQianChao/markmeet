@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 const general = component => {
   return {
     default: component,
-    HeaderView: () => import('../components/Header.vue'),
-    AsideView: () => import('../components/Aside.vue'),
+    HeaderView: () => import('@/components/Header.vue'),
+    AsideView: () => import('@/components/Aside.vue'),
   }
 }
 const router = createRouter({
@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'index',
-      components: general(() => import('../views/Index.vue')),
+      components: general(() => import('@/views/Index.vue')),
       meta: {
         requireAuth: true,
       },
@@ -21,17 +21,17 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/Login.vue'),
+      component: () => import('@/views/Login.vue'),
     },
     {
       path: '/setting',
       name: 'setting',
-      components: general(()=>import('../views/Setting.vue'))
+      components: general(()=>import('@/views/Setting.vue'))
     },
     {
       path: '/404',
       name: '404',
-      component: () => import('../views/Error404.vue'),
+      component: () => import('@/views/Error404.vue'),
     },
   ],
 })

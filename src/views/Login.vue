@@ -1,31 +1,29 @@
 <script>
 import { reactive } from 'vue'
-import instance from '../utils/axios'
+import { login } from '@/api/login'
 import { ElMessage } from 'element-plus'
-import router from '../router'
+import router from '@/router'
+import { httpStatus } from '@/utils/httpStatus'
 
 export default {
   setup() {
     const formData = reactive({
-      username: 'admin',
-      password: 'admin',
+      username: 'aaa',
+      password: '123456',
       remember: false,
     })
+
     const onSubmit = () => {
-      instance.get('/login', formData).then(
+      login(formData).then(
         value => {
-          if(value.code === 200){
-            ElMessage.success(value.message)
-            localStorage.setItem('token',value.data.token)
+          if (value.data.code === httpStatus.success) {
+            ElMessage.success('登录成功')
             router.replace('/')
-            }
-          
-          
+          }
         },
-        error => ElMessage.error(error)
+        error => console.log(error)
       )
     }
-
     return {
       formData,
       onSubmit,
