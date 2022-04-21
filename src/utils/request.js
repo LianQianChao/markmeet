@@ -3,7 +3,7 @@ import { ElMessage } from 'element-plus'
 import { httpStatus } from '@/utils/httpStatus'
 
 const request = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://localhost:3000/api',
   timeout: 5000,
 })
 

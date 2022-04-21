@@ -26,12 +26,17 @@ const router = createRouter({
     {
       path: '/setting',
       name: 'setting',
-      components: general(()=>import('@/views/Setting.vue'))
+      components: general(() => import('@/views/Setting.vue')),
     },
     {
       path: '/404',
       name: '404',
       component: () => import('@/views/Error404.vue'),
+    },
+    {
+      path: '/users',
+      name: 'users',
+      components: general(() => import('@/views/User.vue')),
     },
   ],
 })

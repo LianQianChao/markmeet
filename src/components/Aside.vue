@@ -2,13 +2,15 @@
 import {
     Location,
     Setting,
+    User
   } from '@element-plus/icons-vue'
 import aside from '@/api/aside'
 
 export default {
   components:{
     Location,
-    Setting
+    Setting,
+    User
   },
   setup(){
     
